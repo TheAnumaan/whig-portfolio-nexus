@@ -42,21 +42,73 @@ const Index = () => {
   const [researchPapers, setResearchPapers] = useState([
     {
       id: 1,
-      title: "AI-Driven Energy Optimization",
-      description: "Research work integrating smart meters, IoT, and cloud analytics for energy optimization",
-      authors: "Anumaan Whig, Pawan Whig",
-      publication: "IEEE Conference",
-      year: "2024",
-      status: "Published"
+      title: "Harnessing Data Engineering for Optimizing Blue-Green Infrastructure: Building Resilient and Sustainable Urban Ecosystems",
+      description: "Integrating Blue-Green Infrastructure Into Urban Development",
+      authors: "DR Seelam, MD Kidiyur, P Whig, A Whig",
+      publication: "Integrating Blue-Green Infrastructure Into Urban Development",
+      year: "2025",
+      status: "Published",
+      citedBy: 17
     },
     {
       id: 2,
-      title: "Extended Reality + Deep Learning",
-      description: "XR and deep learning applications for environmental sustainability",
-      authors: "Anumaan Whig, Research Team",
-      publication: "Springer",
+      title: "Leveraging AI for Sustainable Drug Commercialization and Advanced Therapy Management in TVET Innovations in Cell and Gene Therapy and Patient Support",
+      description: "Integrating AI and Sustainability in Technical and Vocational Education",
+      authors: "PR Guttha, A Whig, P Whig",
+      publication: "Integrating AI and Sustainability in Technical and Vocational Education",
+      year: "2025",
+      status: "Published",
+      citedBy: 5
+    },
+    {
+      id: 3,
+      title: "Machine Learning for Environmental Sustainability in the Corporate World",
+      description: "Driving Business Success Through Eco-Friendly Strategies",
+      authors: "R Gera, S Banerjee, DV Saratchandran, S Arora, A Whig",
+      publication: "Driving Business Success Through Eco-Friendly Strategies",
+      year: "2025",
+      status: "Published",
+      citedBy: 5
+    },
+    {
+      id: 4,
+      title: "Sustainability: Innovations and Impacts",
+      description: "Exploring the Impact of Extended Reality (XR) Technologies on Promoting Environmental Sustainability",
+      authors: "A Whig, P Whig, SK Gupta",
+      publication: "Exploring the Impact of Extended Reality (XR) Technologies",
+      year: "2025",
+      status: "Published",
+      citedBy: null
+    },
+    {
+      id: 5,
+      title: "Harnessing XR Technologies and Deep Learning for Environmental Sustainability: Innovations and Impacts",
+      description: "Exploring the Impact of Extended Reality (XR) Technologies on Promoting Environmental Sustainability",
+      authors: "A Whig, P Whig, SK Gupta",
+      publication: "Exploring the Impact of Extended Reality (XR) Technologies",
+      year: "2025",
+      status: "Published",
+      citedBy: null
+    },
+    {
+      id: 6,
+      title: "Sustainable Innovation in Healthcare: The Role of Large Language Models",
+      description: "AI-Enabled Sustainable Innovations in Education and Business",
+      authors: "A Upadhyaya, MK Mishra, S Nandal, A Whig, P Whig",
+      publication: "AI-Enabled Sustainable Innovations in Education and Business",
+      year: "2025",
+      status: "Published",
+      citedBy: null
+    },
+    {
+      id: 7,
+      title: "AI-driven energy optimization: integrating smart meters, controllers, and cloud analytics for efficient urban infrastructure management",
+      description: "Smart Cities integration for energy optimization using AI and IoT technologies",
+      authors: "P Whig, SS Balantrapu, A Whig, N Alam, RS Shinde, PK Dutta",
+      publication: "8th IET Smart Cities Symposium (SCS 2024)",
       year: "2024",
-      status: "In Progress"
+      status: "Published",
+      citedBy: null
     }
   ]);
 
@@ -351,13 +403,20 @@ const Index = () => {
               >
                 <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 h-full">
                   <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <CardTitle className="text-white text-lg">{paper.title}</CardTitle>
-                      <Badge className="bg-purple-900/30 text-purple-300 border-purple-700">
-                        {paper.year}
-                      </Badge>
+                    <div className="flex justify-between items-start mb-2">
+                      <CardTitle className="text-white text-lg leading-tight">{paper.title}</CardTitle>
+                      <div className="flex flex-col items-end gap-2">
+                        <Badge className="bg-purple-900/30 text-purple-300 border-purple-700">
+                          {paper.year}
+                        </Badge>
+                        {paper.citedBy && (
+                          <Badge className="bg-orange-900/30 text-orange-300 border-orange-700 text-xs">
+                            Cited: {paper.citedBy}
+                          </Badge>
+                        )}
+                      </div>
                     </div>
-                    <CardDescription className="text-slate-400">
+                    <CardDescription className="text-slate-400 text-sm">
                       {paper.authors}
                     </CardDescription>
                     <Badge className="w-fit bg-amber-900/30 text-amber-300 border-amber-700">
