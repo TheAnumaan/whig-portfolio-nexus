@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -173,27 +174,27 @@ const Index = () => {
         {isAuthenticated && (
           <motion.button
             onClick={handleLogout}
-            className="p-3 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg transition-colors"
+            className="p-2 sm:p-3 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg transition-colors"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             title="Logout"
           >
-            <LogOut className="w-5 h-5" />
+            <LogOut className="w-4 h-4 sm:w-5 sm:h-5" />
           </motion.button>
         )}
         <motion.button
           onClick={handleAdminClick}
-          className="p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-colors"
+          className="p-2 sm:p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-colors"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           title={isAuthenticated ? "Admin Panel" : "Login to Admin"}
         >
-          <Settings className="w-5 h-5" />
+          <Settings className="w-4 h-4 sm:w-5 sm:h-5" />
         </motion.button>
       </motion.div>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4">
+      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -201,7 +202,7 @@ const Index = () => {
             transition={{ duration: 0.8 }}
           >
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold text-white mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -210,7 +211,7 @@ const Index = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-xl md:text-2xl text-blue-200 mb-8"
+              className="text-lg sm:text-xl md:text-2xl text-blue-200 mb-6 sm:mb-8 px-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -219,7 +220,7 @@ const Index = () => {
             </motion.p>
             
             <motion.p 
-              className="text-lg text-slate-300 mb-12 max-w-2xl mx-auto"
+              className="text-base sm:text-lg text-slate-300 mb-8 sm:mb-12 max-w-2xl mx-auto px-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
@@ -228,29 +229,29 @@ const Index = () => {
             </motion.p>
             
             <motion.div 
-              className="flex flex-wrap gap-4 justify-center"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center px-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
             >
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full">
-                <Mail className="w-4 h-4 mr-2" />
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base">
+                <Mail className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                 Contact Me
               </Button>
               <Button 
                 variant="outline" 
-                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-3 rounded-full"
+                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base"
                 onClick={() => window.open('https://github.com/TheAnumaan', '_blank')}
               >
-                <Github className="w-4 h-4 mr-2" />
+                <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                 GitHub
               </Button>
               <Button 
                 variant="outline" 
-                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-3 rounded-full"
+                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base"
                 onClick={() => window.open('https://www.linkedin.com/in/anumaan-whig-41556b323/', '_blank')}
               >
-                <Linkedin className="w-4 h-4 mr-2" />
+                <Linkedin className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                 LinkedIn
               </Button>
             </motion.div>
@@ -259,10 +260,10 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-20 px-4">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
-            className="text-4xl font-bold text-white text-center mb-16"
+            className="text-3xl sm:text-4xl font-bold text-white text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -271,21 +272,21 @@ const Index = () => {
             About Me
           </motion.h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+              <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm h-full">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
-                    <GraduationCap className="w-5 h-5 text-blue-400" />
+                  <CardTitle className="text-white flex items-center gap-2 text-lg sm:text-xl">
+                    <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
                     Education & Background
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="text-slate-300">
+                <CardContent className="text-slate-300 text-sm sm:text-base">
                   <p className="mb-4">
                     Currently pursuing Computer Science & Engineering at Delhi Technological University (formerly DCE), 
                     one of India's premier technical institutions.
@@ -304,17 +305,17 @@ const Index = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+              <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm h-full">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center gap-2">
-                    <Award className="w-5 h-5 text-teal-400" />
+                  <CardTitle className="text-white flex items-center gap-2 text-lg sm:text-xl">
+                    <Award className="w-4 h-4 sm:w-5 sm:h-5 text-teal-400" />
                     Achievements
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2">
+                  <div className="flex flex-wrap gap-2">
                     {achievements.map((achievement, index) => (
-                      <Badge key={index} className="bg-teal-900/30 text-teal-300 border-teal-700">
+                      <Badge key={index} className="bg-teal-900/30 text-teal-300 border-teal-700 text-xs sm:text-sm">
                         {achievement}
                       </Badge>
                     ))}
@@ -327,10 +328,10 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 px-4">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
-            className="text-4xl font-bold text-white text-center mb-16"
+            className="text-3xl sm:text-4xl font-bold text-white text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -339,7 +340,7 @@ const Index = () => {
             Projects
           </motion.h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -350,21 +351,21 @@ const Index = () => {
               >
                 <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 h-full">
                   <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <CardTitle className="text-white text-lg">{project.title}</CardTitle>
-                      <Badge className="bg-blue-900/30 text-blue-300 border-blue-700">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                      <CardTitle className="text-white text-base sm:text-lg leading-tight">{project.title}</CardTitle>
+                      <Badge className="bg-blue-900/30 text-blue-300 border-blue-700 text-xs w-fit">
                         {project.type}
                       </Badge>
                     </div>
-                    <Badge className="w-fit bg-green-900/30 text-green-300 border-green-700">
+                    <Badge className="w-fit bg-green-900/30 text-green-300 border-green-700 text-xs">
                       {project.status}
                     </Badge>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-slate-300 mb-4">
+                    <CardDescription className="text-slate-300 mb-4 text-sm sm:text-base">
                       {project.description}
                     </CardDescription>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1 sm:gap-2">
                       {project.technologies.map((tech, techIndex) => (
                         <Badge key={techIndex} variant="outline" className="text-xs border-slate-600 text-slate-400">
                           {tech}
@@ -380,10 +381,10 @@ const Index = () => {
       </section>
 
       {/* Research Section */}
-      <section className="py-20 px-4">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
-            className="text-4xl font-bold text-white text-center mb-16"
+            className="text-3xl sm:text-4xl font-bold text-white text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -392,7 +393,7 @@ const Index = () => {
             Research Publications
           </motion.h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
             {researchPapers.map((paper, index) => (
               <motion.div
                 key={paper.id}
@@ -403,35 +404,37 @@ const Index = () => {
               >
                 <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 h-full">
                   <CardHeader>
-                    <div className="flex justify-between items-start mb-2">
-                      <CardTitle className="text-white text-lg leading-tight">{paper.title}</CardTitle>
-                      <div className="flex flex-col items-end gap-2">
-                        <Badge className="bg-purple-900/30 text-purple-300 border-purple-700">
-                          {paper.year}
-                        </Badge>
-                        {paper.citedBy && (
-                          <Badge className="bg-orange-900/30 text-orange-300 border-orange-700 text-xs">
-                            Cited: {paper.citedBy}
+                    <div className="flex flex-col gap-3">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                        <CardTitle className="text-white text-sm sm:text-base lg:text-lg leading-tight flex-1">{paper.title}</CardTitle>
+                        <div className="flex flex-row sm:flex-col gap-2">
+                          <Badge className="bg-purple-900/30 text-purple-300 border-purple-700 text-xs w-fit">
+                            {paper.year}
                           </Badge>
-                        )}
+                          {paper.citedBy && (
+                            <Badge className="bg-orange-900/30 text-orange-300 border-orange-700 text-xs w-fit">
+                              Cited: {paper.citedBy}
+                            </Badge>
+                          )}
+                        </div>
                       </div>
+                      <CardDescription className="text-slate-400 text-xs sm:text-sm">
+                        {paper.authors}
+                      </CardDescription>
+                      <Badge className="w-fit bg-amber-900/30 text-amber-300 border-amber-700 text-xs">
+                        {paper.status}
+                      </Badge>
                     </div>
-                    <CardDescription className="text-slate-400 text-sm">
-                      {paper.authors}
-                    </CardDescription>
-                    <Badge className="w-fit bg-amber-900/30 text-amber-300 border-amber-700">
-                      {paper.status}
-                    </Badge>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-slate-300 mb-4">
+                    <CardDescription className="text-slate-300 mb-4 text-sm sm:text-base">
                       {paper.description}
                     </CardDescription>
-                    <div className="flex items-center gap-2">
-                      <Badge variant="outline" className="text-xs border-slate-600 text-slate-400">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                      <Badge variant="outline" className="text-xs border-slate-600 text-slate-400 flex-1">
                         {paper.publication}
                       </Badge>
-                      <Button size="sm" variant="outline" className="ml-auto border-slate-600 text-slate-300 hover:bg-slate-700">
+                      <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 w-fit">
                         <ExternalLink className="w-3 h-3 mr-1" />
                         View
                       </Button>
@@ -442,13 +445,13 @@ const Index = () => {
             ))}
           </div>
           
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 sm:mt-12">
             <Button 
               variant="outline" 
-              className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-full"
+              className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base"
               onClick={() => window.open('https://scholar.google.com/citations?hl=en&user=-HqYBtEAAAAJ&view_op=list_works', '_blank')}
             >
-              <ExternalLink className="w-4 h-4 mr-2" />
+              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
               View All Publications
             </Button>
           </div>
@@ -456,10 +459,10 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20 px-4">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
-            className="text-4xl font-bold text-white text-center mb-16"
+            className="text-3xl sm:text-4xl font-bold text-white text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -469,7 +472,7 @@ const Index = () => {
           </motion.h2>
           
           <motion.div 
-            className="flex flex-wrap gap-4 justify-center"
+            className="flex flex-wrap gap-3 sm:gap-4 justify-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -481,7 +484,7 @@ const Index = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Badge className="bg-slate-800/50 text-slate-200 border-slate-600 px-4 py-2 text-sm hover:bg-blue-900/30 hover:text-blue-300 hover:border-blue-700 transition-all duration-300">
+                <Badge className="bg-slate-800/50 text-slate-200 border-slate-600 px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm hover:bg-blue-900/30 hover:text-blue-300 hover:border-blue-700 transition-all duration-300">
                   {skill}
                 </Badge>
               </motion.div>
@@ -491,10 +494,10 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-4">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2 
-            className="text-4xl font-bold text-white mb-8"
+            className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -504,7 +507,7 @@ const Index = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-lg text-slate-300 mb-12"
+            className="text-base sm:text-lg text-slate-300 mb-8 sm:mb-12 px-2"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -515,32 +518,32 @@ const Index = () => {
           </motion.p>
           
           <motion.div 
-            className="flex flex-wrap gap-6 justify-center"
+            className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 justify-center px-2"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full">
-              <Mail className="w-4 h-4 mr-2" />
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-5 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base">
+              <Mail className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
               Email
             </Button>
             <Button 
-              className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-full"
+              className="bg-slate-700 hover:bg-slate-600 text-white px-5 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base"
               onClick={() => window.open('https://www.linkedin.com/in/anumaan-whig-41556b323/', '_blank')}
             >
-              <Linkedin className="w-4 h-4 mr-2" />
+              <Linkedin className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
               LinkedIn
             </Button>
             <Button 
-              className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-full"
+              className="bg-slate-700 hover:bg-slate-600 text-white px-5 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base"
               onClick={() => window.open('https://github.com/TheAnumaan', '_blank')}
             >
-              <Github className="w-4 h-4 mr-2" />
+              <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
               GitHub
             </Button>
-            <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 px-6 py-3 rounded-full">
-              <MapPin className="w-4 h-4 mr-2" />
+            <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 px-5 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base">
+              <MapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
               Delhi, India
             </Button>
           </motion.div>
@@ -548,9 +551,9 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 border-t border-slate-800">
+      <footer className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8 border-t border-slate-800">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="text-slate-400">
+          <p className="text-slate-400 text-sm sm:text-base">
             © 2024 Anumaan Whig. Built with passion for innovation and sustainability.
           </p>
         </div>
