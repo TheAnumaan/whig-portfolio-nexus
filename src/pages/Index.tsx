@@ -12,11 +12,26 @@ const Index = () => {
   const [showAdmin, setShowAdmin] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [displayText, setDisplayText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
   const { isAuthenticated, logout } = useAuth();
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+
+  const fullName = "Anumaan Whig";
+
+  // Typing animation effect
+  useEffect(() => {
+    if (currentIndex < fullName.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev + fullName[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, 150);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, fullName]);
 
   const [projects, setProjects] = useState([
     {
@@ -168,7 +183,7 @@ const Index = () => {
     </div>
   );
 
-  // Advanced card variants
+  // Fixed animation variants
   const cardVariants = {
     hidden: { 
       opacity: 0, 
@@ -183,7 +198,7 @@ const Index = () => {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: [0.22, 1, 0.36, 1]
+        ease: "easeOut"
       }
     },
     hover: {
@@ -207,7 +222,7 @@ const Index = () => {
       transition: {
         delay: i * 0.1,
         duration: 0.8,
-        ease: [0.22, 1, 0.36, 1]
+        ease: "easeOut"
       }
     })
   };
@@ -330,32 +345,24 @@ const Index = () => {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 relative"
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: 0.2, duration: 1.2, ease: "easeOut" }}
             >
               <motion.span
-                className="inline-block"
+                className="inline-block bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent"
                 whileHover={{ 
                   scale: 1.05,
                   rotateY: 15,
-                  textShadow: "0 0 30px rgba(59, 130, 246, 0.5)"
                 }}
                 transition={{ duration: 0.3 }}
               >
-                Anumaan
-              </motion.span>{" "}
-              <motion.span 
-                className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent inline-block"
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                style={{ backgroundSize: "200% 200%" }}
-                whileHover={{ 
-                  scale: 1.05,
-                  rotateY: -15,
-                }}
-              >
-                Whig
+                {displayText}
+                <motion.span
+                  className="animate-pulse"
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.8, repeat: Infinity }}
+                >
+                  |
+                </motion.span>
               </motion.span>
               
               {/* Floating decorative elements */}
@@ -398,16 +405,18 @@ const Index = () => {
               transition={{ delay: 1, duration: 0.8 }}
             >
               {[
-                { icon: Mail, text: "Contact Me", onClick: () => window.open('mailto:contact@example.com') },
-                { icon: Github, text: "GitHub", onClick: () => window.open('https://github.com/TheAnumaan', '_blank') },
-                { icon: Linkedin, text: "LinkedIn", onClick: () => window.open('https://www.linkedin.com/in/anumaan-whig-41556b323/', '_blank') }
+                { icon: Mail, text: "Contact Me", onClick: () => window.open('mailto:contact@example.com'), primary: true },
+                { icon: Github, text: "GitHub", onClick: () => window.open('https://github.com/TheAnumaan', '_blank'), primary: false },
+                { icon: Linkedin, text: "LinkedIn", onClick: () => window.open('https://www.linkedin.com/in/anumaan-whig-41556b323/', '_blank'), primary: false }
               ].map((button, index) => (
                 <motion.div key={index} whileHover={{ y: -5 }} whileTap={{ scale: 0.95 }}>
                   <Button 
-                    className={`${index === 0 ? 'bg-blue-600 hover:bg-blue-700' : 'border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white'} text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base backdrop-blur-sm transition-all duration-300`}
-                    variant={index === 0 ? "default" : "outline"}
+                    className={`${button.primary 
+                      ? 'bg-blue-600 hover:bg-blue-700 text-white border-blue-600' 
+                      : 'bg-slate-800/50 hover:bg-slate-700/50 text-blue-400 border-blue-400 hover:text-white hover:border-white border'}
+                    px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base backdrop-blur-sm transition-all duration-300`}
+                    variant={button.primary ? "default" : "outline"}
                     onClick={button.onClick}
-                    whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)" }}
                   >
                     <button.icon className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                     {button.text}
@@ -688,7 +697,6 @@ const Index = () => {
                 variant="outline" 
                 className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base backdrop-blur-sm"
                 onClick={() => window.open('https://scholar.google.com/citations?hl=en&user=-HqYBtEAAAAJ&view_op=list_works', '_blank')}
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(147, 51, 234, 0.3)" }}
               >
                 <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                 View All Publications
@@ -784,10 +792,10 @@ const Index = () => {
             viewport={{ once: true }}
           >
             {[
-              { icon: Mail, text: "Email", onClick: () => window.open('mailto:contact@example.com'), color: "bg-blue-600 hover:bg-blue-700" },
-              { icon: Linkedin, text: "LinkedIn", onClick: () => window.open('https://www.linkedin.com/in/anumaan-whig-41556b323/', '_blank'), color: "bg-slate-700 hover:bg-slate-600" },
-              { icon: Github, text: "GitHub", onClick: () => window.open('https://github.com/TheAnumaan', '_blank'), color: "bg-slate-700 hover:bg-slate-600" },
-              { icon: MapPin, text: "Delhi, India", color: "border-slate-600 text-slate-300 hover:bg-slate-700", variant: "outline" }
+              { icon: Mail, text: "Email", onClick: () => window.open('mailto:contact@example.com'), color: "bg-blue-600 hover:bg-blue-700 text-white" },
+              { icon: Linkedin, text: "LinkedIn", onClick: () => window.open('https://www.linkedin.com/in/anumaan-whig-41556b323/', '_blank'), color: "bg-slate-700 hover:bg-slate-600 text-white" },
+              { icon: Github, text: "GitHub", onClick: () => window.open('https://github.com/TheAnumaan', '_blank'), color: "bg-slate-700 hover:bg-slate-600 text-white" },
+              { icon: MapPin, text: "Delhi, India", color: "border-slate-600 text-slate-300 hover:bg-slate-700 bg-slate-800/50", variant: "outline" }
             ].map((button, index) => (
               <motion.div 
                 key={index}
@@ -798,7 +806,6 @@ const Index = () => {
                   className={`${button.color} px-5 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base backdrop-blur-sm transition-all duration-300`}
                   variant={button.variant as any || "default"}
                   onClick={button.onClick}
-                  whileHover={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)" }}
                 >
                   <button.icon className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                   {button.text}
