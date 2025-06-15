@@ -31,18 +31,31 @@ const Index = () => {
     },
     {
       id: 3,
+      title: "Deepfake Detector",
+      description: "Advanced machine learning system to detect deepfake videos and images using computer vision and neural networks",
+      technologies: ["Machine Learning", "Computer Vision", "Python", "Neural Networks", "OpenCV"],
+      type: "AI/Security",
+      status: "Completed"
+    }
+  ]);
+
+  const [researchPapers, setResearchPapers] = useState([
+    {
+      id: 1,
       title: "AI-Driven Energy Optimization",
       description: "Research work integrating smart meters, IoT, and cloud analytics for energy optimization",
-      technologies: ["AI", "IoT", "Cloud Analytics", "Smart Meters"],
-      type: "Research",
+      authors: "Anumaan Whig, Pawan Whig",
+      publication: "IEEE Conference",
+      year: "2024",
       status: "Published"
     },
     {
-      id: 4,
+      id: 2,
       title: "Extended Reality + Deep Learning",
       description: "XR and deep learning applications for environmental sustainability",
-      technologies: ["XR", "Deep Learning", "Sustainability", "Python"],
-      type: "Research",
+      authors: "Anumaan Whig, Research Team",
+      publication: "Springer",
+      year: "2024",
       status: "In Progress"
     }
   ]);
@@ -51,7 +64,7 @@ const Index = () => {
     "Artificial Intelligence", "Machine Learning", "Deep Learning", 
     "Natural Language Processing", "Internet of Things", "Cloud Computing",
     "Extended Reality", "Blockchain", "Python", "JavaScript", "React",
-    "Chrome Extensions", "Research", "Innovation"
+    "Chrome Extensions", "Research", "Innovation", "Computer Vision"
   ];
 
   const achievements = [
@@ -172,11 +185,19 @@ const Index = () => {
                 <Mail className="w-4 h-4 mr-2" />
                 Contact Me
               </Button>
-              <Button variant="outline" className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-3 rounded-full">
+              <Button 
+                variant="outline" 
+                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-3 rounded-full"
+                onClick={() => window.open('https://github.com/TheAnumaan', '_blank')}
+              >
                 <Github className="w-4 h-4 mr-2" />
                 GitHub
               </Button>
-              <Button variant="outline" className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-3 rounded-full">
+              <Button 
+                variant="outline" 
+                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-3 rounded-full"
+                onClick={() => window.open('https://www.linkedin.com/in/anumaan-whig-41556b323/', '_blank')}
+              >
                 <Linkedin className="w-4 h-4 mr-2" />
                 LinkedIn
               </Button>
@@ -263,10 +284,10 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Projects & Research
+            Projects
           </motion.h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -302,6 +323,75 @@ const Index = () => {
                 </Card>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Research Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="text-4xl font-bold text-white text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Research Publications
+          </motion.h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {researchPapers.map((paper, index) => (
+              <motion.div
+                key={paper.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 h-full">
+                  <CardHeader>
+                    <div className="flex justify-between items-start">
+                      <CardTitle className="text-white text-lg">{paper.title}</CardTitle>
+                      <Badge className="bg-purple-900/30 text-purple-300 border-purple-700">
+                        {paper.year}
+                      </Badge>
+                    </div>
+                    <CardDescription className="text-slate-400">
+                      {paper.authors}
+                    </CardDescription>
+                    <Badge className="w-fit bg-amber-900/30 text-amber-300 border-amber-700">
+                      {paper.status}
+                    </Badge>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-slate-300 mb-4">
+                      {paper.description}
+                    </CardDescription>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className="text-xs border-slate-600 text-slate-400">
+                        {paper.publication}
+                      </Badge>
+                      <Button size="sm" variant="outline" className="ml-auto border-slate-600 text-slate-300 hover:bg-slate-700">
+                        <ExternalLink className="w-3 h-3 mr-1" />
+                        View
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button 
+              variant="outline" 
+              className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-full"
+              onClick={() => window.open('https://scholar.google.com/citations?hl=en&user=-HqYBtEAAAAJ&view_op=list_works', '_blank')}
+            >
+              <ExternalLink className="w-4 h-4 mr-2" />
+              View All Publications
+            </Button>
           </div>
         </div>
       </section>
@@ -376,11 +466,17 @@ const Index = () => {
               <Mail className="w-4 h-4 mr-2" />
               Email
             </Button>
-            <Button className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-full">
+            <Button 
+              className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-full"
+              onClick={() => window.open('https://www.linkedin.com/in/anumaan-whig-41556b323/', '_blank')}
+            >
               <Linkedin className="w-4 h-4 mr-2" />
               LinkedIn
             </Button>
-            <Button className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-full">
+            <Button 
+              className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-full"
+              onClick={() => window.open('https://github.com/TheAnumaan', '_blank')}
+            >
               <Github className="w-4 h-4 mr-2" />
               GitHub
             </Button>
