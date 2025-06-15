@@ -183,7 +183,7 @@ const Index = () => {
     </div>
   );
 
-  // Fixed animation variants
+  // Fixed animation variants with proper TypeScript types
   const cardVariants = {
     hidden: { 
       opacity: 0, 
@@ -198,7 +198,7 @@ const Index = () => {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.6, -0.05, 0.01, 0.99]
       }
     },
     hover: {
@@ -209,22 +209,21 @@ const Index = () => {
       boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
       transition: {
         duration: 0.3,
-        ease: "easeOut"
+        ease: [0.6, -0.05, 0.01, 0.99]
       }
     }
   };
 
   const textVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: (i: number) => ({
+    visible: {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1,
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.6, -0.05, 0.01, 0.99]
       }
-    })
+    }
   };
 
   const handleAdminClick = () => {
@@ -345,7 +344,7 @@ const Index = () => {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 relative"
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 1.2, ease: "easeOut" }}
+              transition={{ delay: 0.2, duration: 1.2, ease: [0.6, -0.05, 0.01, 0.99] }}
             >
               <motion.span
                 className="inline-block bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent"
@@ -383,7 +382,7 @@ const Index = () => {
               variants={textVariants}
               initial="hidden"
               animate="visible"
-              custom={1}
+              transition={{ delay: 0.1 }}
             >
               Computer Science & Engineering Student | AI Researcher | Innovation Enthusiast
             </motion.p>
@@ -393,7 +392,7 @@ const Index = () => {
               variants={textVariants}
               initial="hidden"
               animate="visible"
-              custom={2}
+              transition={{ delay: 0.2 }}
             >
               Passionate about AI-driven solutions for sustainability, EdTech innovations, and cutting-edge research at Delhi Technological University
             </motion.p>
