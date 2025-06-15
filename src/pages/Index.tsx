@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useMemo, useCallback, memo } from 'react';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -119,10 +118,12 @@ const ResearchCard = memo(({ paper, index }: { paper: any; index: number }) => (
           <Badge variant="outline" className="text-xs border-slate-600 text-slate-400 flex-1">
             {paper.publication}
           </Badge>
-          <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 w-fit">
-            <ExternalLink className="w-3 h-3 mr-1" />
-            View
-          </Button>
+          {paper.link && (
+            <Button size="sm" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 w-fit" onClick={() => window.open(paper.link, '_blank')}>
+              <ExternalLink className="w-3 h-3 mr-1" />
+              View
+            </Button>
+          )}
         </div>
       </CardContent>
     </Card>
@@ -180,7 +181,8 @@ const Index = () => {
       publication: "Integrating Blue-Green Infrastructure Into Urban Development",
       year: "2025",
       status: "Published",
-      citedBy: 17
+      citedBy: 17,
+      link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-HqYBtEAAAAJ&citation_for_view=-HqYBtEAAAAJ:u5HHmVD_uO8C"
     },
     {
       id: 2,
@@ -190,7 +192,8 @@ const Index = () => {
       publication: "Integrating AI and Sustainability in Technical and Vocational Education",
       year: "2025",
       status: "Published",
-      citedBy: 5
+      citedBy: 5,
+      link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-HqYBtEAAAAJ&citation_for_view=-HqYBtEAAAAJ:d1gkVwhDpl0C"
     },
     {
       id: 3,
@@ -200,7 +203,8 @@ const Index = () => {
       publication: "Driving Business Success Through Eco-Friendly Strategies",
       year: "2025",
       status: "Published",
-      citedBy: 5
+      citedBy: 5,
+      link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-HqYBtEAAAAJ&citation_for_view=-HqYBtEAAAAJ:Y0pCki6q_DkC"
     },
     {
       id: 4,
@@ -210,7 +214,8 @@ const Index = () => {
       publication: "Exploring the Impact of Extended Reality (XR) Technologies",
       year: "2025",
       status: "Published",
-      citedBy: null
+      citedBy: null,
+      link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-HqYBtEAAAAJ&citation_for_view=-HqYBtEAAAAJ:2osOgNQ5qMEC"
     }
   ], []);
 
